@@ -1,0 +1,33 @@
+﻿@model IEnumerable<KhromovGameStore.Models.Order>
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>User email</th>
+        <th>Sum UAH</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sum)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

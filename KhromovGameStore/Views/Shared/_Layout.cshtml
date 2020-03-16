@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="~/Content/Reset.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/Main.css" />
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+        @if (Session["UserTypeId"] != null && Convert.ToInt32(Session["UserTypeId"]) == 2)
+        {
+            <a href="/Genre">Genres Admin</a>
+            <a href="/Game">Games Admin</a>
+            <a href="/Order">Orders Admin</a>
+        }
+        @if (Session["UserId"] == null)
+        {
+            <a href="/Login">Login</a>
+            <a href="/Register">Register</a>
+        }
+        @if (Session["UserId"] != null)
+        {
+            <a href="/Logout">Logout</a>
+        }
+    </header>
+    <div id="content">
+        @RenderBody()
+    </div>
+</body>
+</html>

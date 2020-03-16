@@ -1,0 +1,28 @@
+﻿@model KhromovGameStore.Models.Order
+
+@{
+    ViewBag.Title = "Order №" + @Model.Id;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>Email: @Model.User.Email</p>
+<p>Sum: @Model.Sum UAH</p>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Genre</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var orderGame in @ViewBag.OrderGames)
+    {
+        <tr>
+            <td>@orderGame.Game.Id</td>
+            <td>@orderGame.Game.Name</td>
+            <td>@orderGame.Game.Genre.Name</td>
+            <td>@orderGame.Price</td>
+        </tr>
+    }
+</table>

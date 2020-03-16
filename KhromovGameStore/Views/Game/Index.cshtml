@@ -1,0 +1,30 @@
+﻿@model IEnumerable<KhromovGameStore.Models.Game>
+
+@{
+    ViewBag.Title = "Game list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Operations</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+        <td>@Html.DisplayFor(modelItem => item.Price)</td>
+        <td>@Html.DisplayFor(modelItem => item.Genre.Name)</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+    }
+</table>

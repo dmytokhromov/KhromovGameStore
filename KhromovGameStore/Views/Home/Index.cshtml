@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="cart">
+    <a href="/Cart">
+        CART(<span id="products-count">@ViewBag.CartCount</span>)
+        <span id="products-price">@ViewBag.CartPrice</span> UAH
+    </a>
+</div>
+
+<div>
+    @foreach (var g in ViewBag.Games)
+    {
+    <div class="game">
+        <div class="game-info">
+            <p>@g.Name</p>
+            <p>Genre: @g.Genre.Name</p>
+            <p>Description: @g.Description</p>
+        </div>
+        <div class="game-cart">
+            <p>Price: @g.Price UAH</p>
+            @if (Session["UserId"] != null)
+            {
+                <form action="/Cart/Add" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="GameId" value="@g.Id" />
+                    <button type="submit">Add to cart</button>
+                </form>
+            }
+        </div>
+    </div>
+    }
+</div>

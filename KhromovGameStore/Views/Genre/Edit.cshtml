@@ -1,0 +1,17 @@
+﻿@model KhromovGameStore.Models.Genre
+
+@{
+    ViewBag.Title = "Edit genre №" + @Model.Id;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Edit", "Genre", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    <div>
+        @Html.LabelFor(m => m.Name, "Name")
+        @Html.EditorFor(m => m.Name)
+    </div>
+    <input type="submit" value="Update" />
+}

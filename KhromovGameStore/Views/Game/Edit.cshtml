@@ -1,0 +1,29 @@
+﻿@model KhromovGameStore.Models.Game
+
+@{
+    ViewBag.Title = "Edit game №" + @Model.Id;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Edit", "Game", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    <div>
+        @Html.LabelFor(m => m.Name, "Name")
+        @Html.EditorFor(m => m.Name)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Description, "Description")
+        @Html.EditorFor(m => m.Description)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Price, "Price")
+        @Html.EditorFor(m => m.Price)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.GenreId, "Genres")
+        @Html.DropDownListFor(model => model.GenreId, ViewBag.Genres as SelectList)
+    </div>
+    <input type="submit" value="Update" />
+}
